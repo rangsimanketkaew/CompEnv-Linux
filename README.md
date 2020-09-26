@@ -1,6 +1,4 @@
-# CompEnv-Linux
-
-Computational environment on Linux
+# Computational environment on Linux
 
 ## Compilers
 
