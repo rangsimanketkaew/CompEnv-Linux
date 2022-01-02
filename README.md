@@ -1,4 +1,38 @@
-# Computational environment on Linux
+# Compiling
+
+## Tricks for C++ compilation
+
+1. Parallelism: `-J N`, where `N` is number of jobs
+2. Build on local disk instead of a network file system like NFS. SSD is better than HDD.
+3. Upgrade to a newer version of gcc
+4. The more RAM your machine has, the faster compilation
+5. Guard condition for header
+
+```cpp
+#ifndef SOME_NAME_h
+#define SOME_NAME_h
+
+...
+
+#endif
+```
+
+6. Forward declaration
+```cpp
+int sum(int, int);
+
+int sum(int a, int b)
+{
+    return a+b;
+}
+```
+
+7. unnamed or anonymous namespaces
+```cpp
+namespace {
+...
+}
+```
 
 ## Compilers
 
