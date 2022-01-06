@@ -23,7 +23,8 @@
 - `-std=c++11` - specify C++ version 11
 - `-fPIC` - Position Independent Code to avoid error when building shared libraries for dynamic linking
 - `-O0` - no optimization, faster compilation, better for debugging builds
-- `-O2` - turn on optimizations
+- `-O1` - turn on optimizations - minimize code size
+- `-O2` - turn on optimizations - maximize speed
 - `-O3` - turn on higher level of optimizations, slow compiling-time, better for production builds
 - `-OFast` - higher level of optimizations than `-O3`
 - `-o <name>` - name of the output file
