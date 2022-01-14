@@ -73,11 +73,13 @@ Boost (v.1.70.0 rc2 works for me) [install](./boost.md)
 
 ## Compile Bagel on Piz Daint
 
+Updated: 14/01/2022
+
 1. Load module
     ```sh
     module load daint-gpu
     module load Boost/1.70.0-CrayGNU-20.11
-    module load gcc/10.3.0
+    module load gcc/10.3.0  # or module switch gcc/x.x.x gcc/10.3.0
     ```
     
 2. Activate Intel MPI & MKL
