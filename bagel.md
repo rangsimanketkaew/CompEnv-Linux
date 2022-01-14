@@ -73,8 +73,6 @@ Boost (v.1.70.0 rc2 works for me) [install](./boost.md)
 
 ## Compile Bagel on Piz Daint
 
-*Follow step 1-4 above before running commands below*
-
 1. Load module
     ```sh
     module load daint-gpu
@@ -90,6 +88,8 @@ Boost (v.1.70.0 rc2 works for me) [install](./boost.md)
     
 3. Configure
     ```sh
+    cd basel-1.2.2/obj
+    
     ../configure CXXFLAGS="-DNDEBUG -O3" \
         --with-boost=/apps/daint/UES/jenkins/7.0.UP02-20.11/gpu/easybuild/software/Boost/1.70.0-CrayGNU-20.11/ \
         --with-mpi=intel --disable-scalapack \
