@@ -25,7 +25,7 @@ Boost (v.1.70.0 rc2 works for me) [install](./boost.md)
     automake -a
     ```
 
-5. Compile bagel
+5. Configure
     ```sh
     mkdir obj
     cd obj
@@ -35,13 +35,16 @@ Boost (v.1.70.0 rc2 works for me) [install](./boost.md)
 
     ../configure CXXFLAGS="-DNDEBUG -O3 -mavx" \
         --enable-mkl --with-boost=$BOOST_ROOT \
-        --with-mpi=intel --prefix=path/to/install/bagel-1.2.2/
-        
+        --with-mpi=intel --prefix=path/to/install/bagel-1.2.2/    
+    ```
+
+6. Compile bagel
+    ```sh
     make -j8
     make -j8 install
     ```
 
-6. Test bagel
+7. Test bagel
     ```sh
     mpirun -np 2 path/to/install/bagel-1.2.2/bin/BAGEL test/ch2_sto3g_meci_opt.json
     ```
@@ -72,8 +75,6 @@ Boost (v.1.70.0 rc2 works for me) [install](./boost.md)
 
 *Follow step 1-4 above before running commands below*
 
-Note: I disable MKL & Scalapack
-
 1. Load module
     ```sh
     module load daint-gpu
@@ -90,15 +91,18 @@ Note: I disable MKL & Scalapack
 3. Configure
     ```sh
     ../configure CXXFLAGS="-DNDEBUG -O3" \
-    --with-boost=/apps/daint/UES/jenkins/7.0.UP02-20.11/gpu/easybuild/software/Boost/1.70.0-CrayGNU-20.11/ \
-    --with-mpi=intel  --disable-scalapack \
-    --with-include="-I/opt/cray/pe/libsci/20.09.1/GNU/8.1/x86_64/include/" \
-    --prefix=/project/s1001/bagel-1.2.2/ \
-    --enable-static --disable-shared
+        --with-boost=/apps/daint/UES/jenkins/7.0.UP02-20.11/gpu/easybuild/software/Boost/1.70.0-CrayGNU-20.11/ \
+        --with-mpi=intel --disable-scalapack \
+        --with-include="-I/opt/cray/pe/libsci/20.09.1/GNU/8.1/x86_64/include/" \
+        --prefix=path/to/install/bagel-1.2.2/
     ```
+    
+    Note:
+    - I disable MKL & Scalapack.
+    - If it fails, adding `--enable-static --disable-shared` might help.
     
 4. Compile & install
     ```sh
-    make -j12
+    make -j12  # can take up to 1 hr.
     make install
     ```
