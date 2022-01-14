@@ -67,3 +67,38 @@ Boost (v.1.70.0 rc2 works for me) [install](./boost.md)
     ...
     ...
     ```
+
+## Compile Bagel on Piz Daint
+
+*Follow step 1-4 above before running commands below*
+
+Note: I disable MKL & Scalapack
+
+1. Load module
+    ```sh
+    module load daint-gpu
+    module load Boost/1.70.0-CrayGNU-20.11
+    module load gcc/10.3.0
+    ```
+    
+2. Activate Intel MPI & MKL
+    ```sh
+    source /project/s1001/intel/mpi/2021.5.0/env/vars.sh intel64
+    source /project/s1001/intel/mkl/2022.0.1/env/vars.sh intel64
+    ```
+    
+3. Configure
+    ```sh
+    ../configure CXXFLAGS="-DNDEBUG -O3" \
+    --with-boost=/apps/daint/UES/jenkins/7.0.UP02-20.11/gpu/easybuild/software/Boost/1.70.0-CrayGNU-20.11/ \
+    --with-mpi=intel  --disable-scalapack \
+    --with-include="-I/opt/cray/pe/libsci/20.09.1/GNU/8.1/x86_64/include/" \
+    --prefix=/project/s1001/bagel-1.2.2/ \
+    --enable-static --disable-shared
+    ```
+    
+4. Compile & install
+    ```sh
+    make -j12
+    make install
+    ```
