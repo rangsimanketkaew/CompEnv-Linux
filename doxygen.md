@@ -4,6 +4,7 @@
 sudo apt-get install cmake
 sudo apt-get install flex
 sudo apt-get install bison
+sudo apt-get install graphviz
 
 git clone https://github.com/doxygen/doxygen.git
 cd doxygen
